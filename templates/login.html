@@ -20,7 +20,7 @@
         <div id="formBody"class="box">
           <h1>LogIn</h1><br>
           <div>
-            <form action="{{ url_for('auth.login') }}" method="post" >
+            <form action="/login" method="post" >
               <div class="mb-3">
                 <label for="UserName" class="form-label">UserName</label>
                 <input type="text" name= "username" class="form-control"  id="UserName" />
@@ -36,7 +36,7 @@
               </div>
               <div>
                 <input type="submit" class="btn btn-dark" value="Login"><br><br>
-                Are You a new user? <a href="{{ url_for('auth.register') }}">Register</a>
+                Are You a new user? <a href="/register">Register</a>
 
               </div>
               <div>

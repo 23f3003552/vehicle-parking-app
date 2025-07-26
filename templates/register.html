@@ -20,7 +20,7 @@
         <div id="formBody"class="box">
           <h1>SignUp</h1>
           <div>
-            <form action="{{ url_for('auth.register') }}" method="post">
+            <form action="/register" method="post">
               <div class="mb-3">
                 <label for="Name" class="form-label">Name</label>
                 <input type="text" name="name" class="form-control"  id="Name" />
@@ -46,7 +46,7 @@
               </div>
               <div>
                 <input type="submit" class="btn btn-dark" value="Register"><br><br>
-                already Registered? <a href="{{ url_for('auth.login') }}">login</a>
+                already Registered? <a href="/login">login</a>
 
               </div>
               <div>

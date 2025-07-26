@@ -1,3 +1,61 @@
+from flask import Flask, render_template,redirect,request,url_for,flash
+from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.exc import IntegrityError
+from flask import current_app as app #if you directly import app it will leads to circular error
+from Application.db import db
+from models.models import User
+
+@app.route("/",methods=["GET","POST"])
+@app.route("/login",methods=["GET","POST"])
+def login():
+    if request.method=="POST":
+        username = request.form.get("username")
+        passwd = request.form.get("passward")
+        this_user = User.query.filter_by(username=username).first()
+        if this_user and check_password_hash(this_user.pass_hash, passwd):
+            if this_user.is_superUser :
+                return render_template("/adash")
+            else:
+                return render_template("/udash")
+        else:
+            flash("Invalid username or password", "danger")
+            return render_template("login.html")
+            
+    return render_template("login.html")        
+                
+
+@app.route("/register",methods=["GET","POST"])
+def register():
+    if request.method=="POST":
+        name = request.form.get("name")
+        username = request.form.get("username")
+        email = request.form.get("email")
+        password = request.form.get("password")
+        if not all([name, username, email, password]):
+            flash("All fields are required", "danger")
+            return render_template("register.html")
+        
+        pass_hash = generate_password_hash(password)
+
+        user = User(name=name, username=username, u_email =email, pass_hash=pass_hash)
+
+        try:
+         db.session.add(user)
+         db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+        flash("Username or email already exists", "warning")
+        return redirect(url_for("/register"))
+
+        flash("Registered! Please log in.", "success")
+        return render_template("/login")
+       
+    return render_template("/register")
+
+
+
+"""
+
 from flask import Blueprint, render_template, request, redirect, session, url_for, flash
 from flask import current_app as app #if you directly import app it will leads to circular error
 from Application.db import db
@@ -60,7 +118,7 @@ def register():
     return redirect(url_for("auth.login"))
 
 """
-
+"""
 from flask import Blueprint, render_template,request,redirect,session,url_for, flash
 from extensions import db
 from models import User
