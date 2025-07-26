@@ -1,0 +1,38 @@
+
+*{
+    margin: 0px;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  background: 
+    repeating-radial-gradient(
+      circle at 0 0, 
+      #eee,
+      #ccc 50px
+    );
+}
+#main,canvas{
+   /* border: 1.5px solid rgb(23, 22, 22);*/
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+#canvas{
+    width: 70%;
+    margin:auto;
+    height:600px;
+    /*border: 3px solid rgb(107, 103, 103);*/
+    
+}
+#formBody{
+    width:340px;
+    height:500px;
+    border:1px solid black;
+    margin:auto;
+    margin-top:50px;
+    
+    background-color: azure;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}

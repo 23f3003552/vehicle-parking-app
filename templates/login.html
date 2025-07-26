@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Form</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="canvas">
+        <div id="formBody"class="box">
+          <h1>LogIn</h1><br>
+          <div>
+            <form method="post" to="/login">
+              <div class="mb-3">
+                <label for="UserName" class="form-label">UserName</label>
+                <input type="text" name= "username" class="form-control"  id="UserName" />
+              </div>
+              <div class="mb-3">
+                <label for="passwd" class="form-label"
+                  >Password</label>
+                <input
+                  type="password"
+                  name="passwd"
+                  class="form-control"
+                  id="passwd"/>
+              </div>
+              <div>
+                <input type="submit" class="btn btn-dark" value="Login"><br><br>
+                Are You a new user? <a href="{{ url_for('register') }}">Register</a>
+
+              </div>
+              <div>
+                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
