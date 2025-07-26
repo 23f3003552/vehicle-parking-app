@@ -1,0 +1,91 @@
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../static/images/bg.jpg") center / cover no-repeat;
+    filter: blur(2px)contrast(150%) brightness(50%) grayscale(70%);
+    z-index: -1;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  background: linear-gradient(to right, #708090 ,#a8b3ab);
+  
+}
+.nav .nav-link {
+  color: white; 
+}
+
+#main,canvas{
+   /* border: 1.5px solid rgb(23, 22, 22);*/
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+#canvas{
+    width: 70%;
+    margin:auto;
+    height:600px;
+    /*border: 3px solid rgb(107, 103, 103);*/
+    
+}
+#formBody2{
+    width:450px;
+    height:450px;
+    border:0.15em solid #708090 ;
+    margin:auto;
+    margin-top:60px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    text-align: justify;
+    padding: 25px;
+}
+#formBody{
+    width:600px;
+    height:550px;
+    border:0.15em solid #708090 ;
+    margin:auto;
+    margin-top:60px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    text-align: justify;
+    padding: 10px;
+}
+/* full-screen, fixed, covers */
+.btn {
+  font-size: 20px;
+  width: 150px;   /* Fixed width for all buttons */
+    height: 45px;   /* Optional: same height */
+    margin-right: 25px; /* Adds space to the right of each button */
+  }
+  #formBody1{
+    width:400px;
+    height:300px;
+    border:0.15em solid #708090 ;
+    margin:auto;
+    margin-top:60px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    text-align: justify;
+    padding: 7px;
+}
+#spot_id{
+  font-size: 27px;
+  width: 200px;  
+    height: 45px;   
+    margin-right: 100px
+}
+#spotstatus{
+  background-color: white;
+  font-size: 25px;
+  width: 200px;  
+  height: 45px;   
+  margin-right: 45px
+}

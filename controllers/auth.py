@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, session, url_for, flash
-from extensions import db
-from models import User
+from flask import current_app as app #if you directly import app it will leads to circular error
+from Application.db import db
+from models.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
 

@@ -1,0 +1,9 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 60px;
+}
+.nav .nav-link {
+  color: white; /* Make text visible on dark background */
+}
