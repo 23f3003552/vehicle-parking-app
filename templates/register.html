@@ -20,32 +20,33 @@
         <div id="formBody"class="box">
           <h1>SignUp</h1>
           <div>
-            <form action="" method="post">
+            <form action="{{ url_for('auth.register') }}" method="post">
               <div class="mb-3">
                 <label for="Name" class="form-label">Name</label>
-                <input type="text" class="form-control"  id="Name" />
+                <input type="text" name="name" class="form-control"  id="Name" />
               </div>
               <div class="mb-3">
                 <label for="UserName" class="form-label">UserName</label>
-                <input type="text" class="form-control"  id="UserName" />
+                <input type="text" name="username" class="form-control"  id="UserName" />
               </div>
 
               <div class="mb-3">
                 <label for="email" class="form-label">email</label>
-                <input type="text" class="form-control"  id="email" />
+                <input type="text" name="email" class="form-control"  id="email" />
               </div>
 
               <div class="mb-3">
-                <label for="passwd" class="form-label"
+                <label for="passwd" name="password" class="form-label"
                   >Password</label>
                 <input
                   type="password"
+                  name="password"
                   class="form-control"
                   id="passwd"/>
               </div>
               <div>
                 <input type="submit" class="btn btn-dark" value="Register"><br><br>
-                already Registered? <a href="{{ url_for('login') }}">login</a>
+                already Registered? <a href="{{ url_for('auth.login') }}">login</a>
 
               </div>
               <div>

@@ -1,21 +1,22 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, render_template
 from config import Config
 from extensions import db, migrate
-from models import *   # import models so Alembic sees them
+from controllers.auth import auth
+from models import *  # Ensure models are imported so Alembic can detect them
 
-def create_app():
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_object(Config)
+app = Flask(__name__)
+app.config.from_object(Config)  # Load configuration (e.g., DB URI, SECRET_KEY)
 
-    db.init_app(app)
-    migrate.init_app(app, db)
+# Initialize extensions
+db.init_app(app)
+migrate.init_app(app, db)
 
-    @app.route("/")
-    def index():
-        return "OK"
+# Register Blueprints
+app.register_blueprint(auth, url_prefix="/auth")  # Add a prefix for clarity
 
-    return app
+@app.route("/")
+def test():
+    return "<h1>text</h1>"
 
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True)
