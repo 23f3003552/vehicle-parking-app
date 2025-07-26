@@ -2,6 +2,12 @@
 __pycache__/
 *.py[codz]
 *$py.class
+config.py
+seeddb.py
+instance/
+*.db
+__pycache__/
+.env
 
 # C extensions
 *.so
@@ -205,3 +211,4 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
