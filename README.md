@@ -1,5 +1,5 @@
 # vehicle-parking-app
-Description
+##Description <br/>
  It’s a multi user app which users can register and use the app  to book a spot at a particular parking location for 4 wheelers . Super-user can add , delete (if spots are not occupied ) or edit   parking lots  and view summary of lots/spots and user details.
 Users can view their parking history summary on  parking .
 AI/LLM Used percentage : Backend - 35% , frontend -28% , UI-8% , auth+ CRUD - 20%
