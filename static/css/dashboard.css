@@ -1,0 +1,34 @@
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("../images/bg.jpg") center / cover no-repeat;
+    filter: blur(2px)contrast(150%) brightness(50%) grayscale(70%);
+    z-index: -1;
+    background-attachment:scroll, local;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  background: linear-gradient(to right, #708090 ,#a8b3ab);
+  
+}
+.nav .nav-link {
+  color: white; 
+}
+.card {
+  border-radius: 30px; 
+  width: 300px;
+  height: 250px;
+
+}
+.card-header {
+ font-size: 20px;
+ font-weight: 500;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}

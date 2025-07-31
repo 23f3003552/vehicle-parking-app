@@ -12,20 +12,19 @@
       crossorigin="anonymous"
     />
 
-    <!-- Your overrides -->
-    <link rel="stylesheet" href="../static/adash.css" />
+   
+    <link rel="stylesheet" href="../static/css/adash.css" />
 
     <title>Edit Parking Lot</title>
   </head>
   <body>
-   
-   
+ 
     <nav class="navbar nav navbar-dark bg-dark">
       <div class="px-4">
         <h2 class="text-white m-0 ">LotBuddy</h2>
       </div>
     </nav>
-
+    
     
     <div id="main">
       <div id="canvas">
@@ -34,7 +33,7 @@
       
           <div class="container py-4">
             <form
-              action="{{ url_for('adash.editlot') }}"
+              action="{{ url_for('editlot',lot_id=lot.lot_id) }}"
               method="post"
               class="mx-auto"
               style="max-width: 700px"
@@ -47,10 +46,10 @@
                   <input
                     type="text"
                     style="font-size: 20px"
-                    name="lot_name"
+                    name="lotname"
                     id="lot_name"
                     class="form-control"
-                    value="Nucleus mall"
+                    value="{{lot.lot_name}}"
                   />
                 </div>
               </div>
@@ -66,7 +65,8 @@
                     name="address"
                     id="address"
                     class="form-control"
-                    Value="near lalpur chock ranchi "
+                    Value="{{loc.loc_address}} "
+                    readonly
                   />
                 </div>
               </div>
@@ -80,7 +80,8 @@
                     name="state"
                     id="state"
                     class="form-control"
-                    value="Jharkhand"
+                    value="{{loc.state}}"
+                    readonly
                   />
                 </div>
               </div>
@@ -94,7 +95,8 @@
                     name="city"
                     id="city"
                     class="form-control"
-                    value="Ranchi"
+                    value="{{loc.city}}"
+                    readonly
                   />
                 </div>
               </div>
@@ -112,7 +114,8 @@
                     class="form-control"
                     pattern="\d{6}"
                     maxlength="6"
-                    value="800001"
+                    value="{{loc.pincode}}"
+                    readonly
                   />
                 </div>
               </div>
@@ -123,14 +126,14 @@
                 >
                 <div class="col-sm-8">
                   <input
-                    type="number"
+                    type="text"
                     style="font-size: 20px"
                     name="price"
                     id="price"
                     class="form-control"
                     step="0.01"
                     min="0"
-                    value="35"
+                    value="{{lot.lot_price}}"
                   />
                 </div>
               </div>
@@ -141,20 +144,21 @@
                 >
                 <div class="col-sm-8">
                   <input
-                    type="number"
+                    type="text"
                     name="maxspot"
                     id="maxspot"
                     class="form-control"
                     min="1"
                     style="font-size: 20px"
-                    value="5"
+                    value="{{lot.max_spot}}"
                   />
                 </div>
               </div>
 
               <div class="text-center btn-container">
                 <button type="submit" class="btn btn-dark " style="margin-reight:100px;">Save Change</button>
-                <a href="#" class="btn btn-danger">Cancel</a>
+                <a href="{{ url_for('adash') }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel?');">Cancel</a>
+
               </div>
             </form>
           </div>

@@ -4,34 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS first -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <!-- Your overrides after -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adash.css') }}" />
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/dashboard.css') }}"
-    />
-
-    <title>parking lot summary</title>
+    <title>Vehicle Parking</title>
   </head>
-
-  <body class="bg-light">
+  <body>
+    <!--header-->
     
-    <!-- Header -->
-    <nav class="navbar navbar-dark tt bg-dark">
-      <div class="container-fluid px-4">
-        <h3 class="text-white text-center m-0">LotBuddy 
-
-</h3>
-      </div>
-    </nav>
-
-
     <nav class="nav navbar px-4 bg-dark">
       <a
         class="nav-link active text-white"
@@ -39,31 +26,41 @@
         href=""
         >Welcome Admin!</a>
       
-      <a class="nav-link text-white" href="/adash">Home</a>
+      <a class="nav-link text-white" href="{{ url_for('adash') }}">Home</a>
       <a class="nav-link text-white" href="/viewusers">Users</a>
       <a class="nav-link text-white" href="/asummary">Summary</a>
       <a class="nav-link d-flex ms-auto text-white" href="/login">Logout</a>
     </nav>
 
-    <br /><br />
+    <br />
+    <div class="w-100  text-center bg-dark">
+        <h2 class="text-white m-0">Registered USers!</h2>
+      </div>
+      <br>
+      <!--user detail table-->
+     <div class="container my-5"> 
+    <table class="table table-hover table-dark text-white">
+    <thead>
 
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="w-100 text-center">
-        <h2 class="text-white m-0"> summary </h2>
-      </div>
-    </nav>
-    <div id="container">
-      <div class="my-2">
-        <h3 class="max-2 text-light  text-center"> summary on parking Spots</h3>
-        <img src="/static/images/bar.png" alt="bar graph">
-      </div>
-      <div class="my-2 ">
-        <h3 class="max-2 text-light text-center"> summary on Revenue</h3>
-       
-        <img src="/static/images/pie.png" class="img-fluid " alt="pie chart">
-      </div>
-    </div>
-
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">UserName</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <th scope="row">{{user.user_id}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.u_email}}</td>
+      <td>@{{user.username}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+</div> 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

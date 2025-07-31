@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Bootstrap CSS first -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <!--internal bootstrap-->
+    <!-- Your overrides after -->
     <link rel="stylesheet" href="../static/css/userDashboard.css" />
 
     <title>Vehicle Parking</title>
@@ -21,20 +22,24 @@
         <h3 class="text-white text-center m-0">LotBuddy</h3>
       </div>
     </nav>
+
+    <!--header-->
     <nav class="nav navbar px-4 bg-dark">
       <a class="nav-link active" aria-current="page">welcome {{username}}</a>
       <a class="nav-link" aria-current="page">home</a>
       <a class="nav-link" href="#">summary</a>
+
       <a class="nav-link d-flex ms-auto" href="/login">log out</a>
     </nav>
+
     <br />
+
     <nav class="navbar navbar-dark bg-dark">
       <div class="w-100 text-center">
         <h2 class="text-white m-0">Recent Parking history</h2>
       </div>
     </nav>
     <br />
-    <!--parking history table-->
     <div class="container">
       <table class="table table-hover table-dark">
         <thead>
@@ -44,12 +49,13 @@
             <th scope="col" style="width: 19%">Location</th>
             <th scope="col" style="width: 19%">vehicle no</th>
             <th scope="col" style="width: 19%">Booking time</th>
+
             <th scope="col" style="width: 19%">payment Status</th>
-            <th scope="col" style="width: 20%">Status</th>
+            <th scope="col" style="width: 20%">Action</th>
           </tr>
         </thead>
         <tbody>
-          {%for b in booking%}
+          {%if booking%} {%for b in booking%}
           <tr>
             <th scope="row">{{b.b_id}}</th>
             <td>{{b.spot_id}}</td>
@@ -57,27 +63,22 @@
             <td>{{b.veh_no}}</td>
             <td>{{b.start_time}}</td>
             <td>{{b.pstat}}</td>
+
             <td>
-<!--update booking button-->
               <a
-                href="{{ url_for('updatebooking', b_id=b.b_id,username=username) }}"
-                class="btn btn-success bg-dark text-light"
-                onclick="return confirm('Are you sure you want to update this booking?')">
-                {{b.b_status}}</a>
+                href="{{ url_for('updatebooking', b_id=b.b_id, username=username) }}"
+                class="btn btn-link text-success"
+                onclick="return confirm('Are you sure you want to update this booking?')"
+              >
+                {{ b.b_status }}
+              </a>
             </td>
           </tr>
-          {% else %}
-          <tr>
-            <td colspan="7" class="text-center text-muted">
-              No parking History for user{{username}}
-            </td>
-          </tr>
-          {% endfor %}
+          {%endfor%} {%endif%}
         </tbody>
       </table>
     </div>
     <br />
-    <!--search bar-->
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid justify-content-center">
         <h3 class="text-white text-center m-3">search parking spot by City</h3>
@@ -95,7 +96,7 @@
         </form>
       </div>
     </nav>
-    <!--seach result-->
+
     {%if lots%}
     <div>
       <nav class="navbar navbar-dark bg-dark">
@@ -114,6 +115,7 @@
               <th scope="col" style="width: 25%">Prime Location</th>
               <th scope="col" style="width: 25%">avilability</th>
               <th scope="col" style="width: 27%">price(per hr)</th>
+
               <th scope="col" style="width: 20%">Action</th>
             </tr>
           </thead>
@@ -122,7 +124,9 @@
             <tr>
               <th scope="row">{{lot.lot_id}}</th>
               <td>{{lot.lot_name}}</td>
+
               <td>{{lot.avcspot}}</td>
+
               <td>{{lot.lot_price}}</td>
               <td>
                 <form method="post" action="" class="d-inline">
@@ -136,6 +140,7 @@
           </tbody>
         </table>
       </div>
+
       {%endif%}
     </div>
 

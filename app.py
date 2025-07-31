@@ -14,6 +14,7 @@ def create_app():
 
 app= create_app()
 from controllers.auth import *
+
 if __name__=='__main__':
     app.run()
 

@@ -13,101 +13,107 @@
     />
 
     <!-- Your overrides -->
-    <link rel="stylesheet" href="../static/css/adash.css" />
+    <link rel="stylesheet"  href="../static/css/adash.css">
+    
 
-    <title>View Parking Spot Detail</title>
+    <title>BOOK PARKING SPOT</title>
   </head>
   <body>
-    <nav class="navbar nav navbar-dark bg-dark">
-      <div class="px-4">
-        <h2 class="text-white m-0">LotBuddy</h2>
+  
+    <!-- Header -->
+    <nav class="navbar navbar-dark tt bg-dark">
+      <div class="container-fluid px-4">
+        <h3 class="text-white text-center m-0">LotBuddy</h3>
       </div>
     </nav>
 
+
+    <!-- Form -->
     <div id="main">
       <div id="canvas">
-        <div id="formBody2" class="box">
-            <h2 class="text-white m-0 text-center">Occupied Parking Spot Detail!</h2>
-           <br>
-        <form
-              action=""
+        <div id="formBody" class="box">
+           <h2 class="text-white m-0 text-center">Book Parking Spot!</h2>
+      
+          <div class="container py-4">
+            <form
+              action="{{ url_for('confirmbook',username=username) }}"
               method="post"
               class="mx-auto"
               style="max-width: 700px"
             >
               <div class="row mb-3 align-items-center">
-                <label for="spotID" class="col-sm-4 col-form-label"
-                  >Spot ID  :</label
+                <label for="lot_name" class="col-sm-4 col-form-label"
+                  >SPOT ID</label
                 >
                 <div class="col-sm-8">
                   <input
                     type="text"
-                    name="lot_name"
+                    name="spotID"
                     id="lot_name"
                     class="form-control"
-                    value="{{booklot.spot_id}}"
+                    value="{{spot.spot_id}}"
                     readonly
                   />
                 </div>
               </div>
 
               <div class="row mb-3 align-items-center">
-                <label for="customerID" class="col-sm-4 col-form-label"
-                  >User ID :</label
+                <label for="address" class="col-sm-4 col-form-label"
+                  >Lot ID</label
                 >
                 <div class="col-sm-8">
                   <input
                     type="text"
-                    name="customerID"
-                    id="customerID"
+                    name="lotID"
+                    id="address"
                     class="form-control"
-                    value="{{booklot.u_id}}"
-                    required
+                    value="{{spot.lot_id}}"
                     readonly
                   />
                 </div>
               </div>
 
-              <div class="row mb-3 align-items-center">
-                <label for="state" class="col-sm-4 col-form-label">Vehicle no:</label>
-                <div class="col-sm-8">
-                  <input
-                    type="text"
-                    name="state"
-                    id="state"
-                    class="form-control"
-                    value="{{booklot.veh_no}}"
-                    readonly
-                  />
-                </div>
-              </div>
 
-             
+              
 
               <div class="row mb-3 align-items-center">
                 <label for="price" class="col-sm-4 col-form-label"
-                  >Booking Time:</label
+                  >userName</label
                 >
                 <div class="col-sm-8">
                   <input
                     type="text"
-                    name="price"
-                    id="price"
+                    name="username"
+                    value="{{username}}"
                     class="form-control"
-                    step="0.01"
-                    min="0"
-                    value="{{booklot.start_time}}"
-                    readonly
+                     required
+                     readonly
                   />
                 </div>
               </div>
 
-              
-               
-            
+              <div class="row mb-3 align-items-center">
+                <label for="maxspot" class="col-sm-4 col-form-label"
+                  >Vehicle Number</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    name="vehno"
+                    id="maxspot"
+                    class="form-control"
+                    
+                    required
+                  />
+                </div>
+              </div>
 
               <div class="text-center">
-                <a href="/adash" class="btn btn-dark" >Return</a>
+                <br>
+                
+                <button type="submit"  class="btn btn-dark" onclick="this.disabled=true; this.form.submit();">Book Spot</button> 
+                <a href="{{url_for('userdash',username=username)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel booking?')">Cancel</a>
+
               </div>
             </form>
           </div>

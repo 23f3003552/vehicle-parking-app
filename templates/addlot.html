@@ -13,17 +13,25 @@
     />
 
     <!-- Your overrides -->
-    <link rel="stylesheet" href="../static/adash.css" />
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/adash.css') }}">
+    
 
     <title>Add New Parking Lot</title>
   </head>
   <body>
   
     <!-- Header -->
-    <nav class="navbar nav navbar-dark bg-dark">
-      <div class="px-4">
-        <h2 class="text-white m-0 ">LotBuddy</h2>
-      </div>
+    <nav class="nav navbar px-4 bg-dark">
+      <a
+        class="nav-link active text-white"
+        aria-current="page"
+        href="/editadmin"
+        >Admin!</a
+      >
+      <a class="nav-link text-white" href="/admindashboard">Home</a>
+      <a class="nav-link text-white" href="/viewuser">Users</a>
+      <a class="nav-link text-white" href="/adminsummary">Summary</a>
+      <a class="nav-link d-flex ms-auto text-white" href="/login">Logout</a>
     </nav>
 
     <!-- Form -->
@@ -34,7 +42,7 @@
       
           <div class="container py-4">
             <form
-              action="{{ url_for('adash.newlot') }}"
+              action="/addlot"
               method="post"
               class="mx-auto"
               style="max-width: 700px"
