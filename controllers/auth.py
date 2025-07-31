@@ -264,3 +264,29 @@ def updatebooking(b_id,username):
        
         return redirect(url_for("userdash",username=username))
     return render_template("updatebooking.html",b=book,username=username)
+
+# for user to book spot
+@app.route("/bookspot/<int:lot_id>/<string:username>", methods=[ "GET","POST"])
+def bookspot(lot_id,username):
+    spot = db.session.query(PSpot).filter_by(lot_id=lot_id, is_available=True).first()
+    return render_template("bookspot.html",spot=spot,username=username)
+#for confirming booking
+@app.route("/confirmbook/<string:username>", methods=["POST","GET"])
+def confirmbook(username):
+       veh_no = request.form.get("vehno")
+       spot_id = request.form.get("spotID")
+       
+       spot = db.session.query(PSpot).filter_by(spot_id=spot_id).first()
+       if spot:
+           spot.is_available = False
+       user = db.session.query(User).filter_by(username=username).first()
+       start_time = datetime.now()
+       bookspot = BookLot( veh_no=veh_no, u_id=user.user_id,  spot_id=spot_id, start_time=start_time, total_amount=0, end_time=datetime(9999, 12, 31))
+       db.session.add(bookspot)
+       db.session.commit()
+       return redirect(url_for("userdash",username=username))
+#user summary
+      
+ 
+
+   

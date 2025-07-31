@@ -125,7 +125,7 @@
               <td>{{lot.avcspot}}</td>
               <td>{{lot.lot_price}}</td>
               <td>
-                <form method="post" action="" class="d-inline">
+                <form method="post" action="{{url_for("bookspot",lot_id=lot.lot_id,username=username)}}" class="d-inline">
                   <button class="btn btn-link text-success" type="submit">
                     Book Spot
                   </button>
@@ -135,6 +135,10 @@
             {%endfor%}
           </tbody>
         </table>
+      </div>
+      {%else%}
+      <div>
+        <h2 class="text-white m-0 text-center"> SORRY !! No Parking Lot Avilable</h2>
       </div>
       {%endif%}
     </div>
